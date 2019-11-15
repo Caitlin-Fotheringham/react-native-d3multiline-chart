@@ -11,13 +11,20 @@ import {
   calculateOverallLineChartData,
   buildColorArray,
 } from './utils/dataCalculation';
-import {dummyData, leftAxisData, bottomAxisData} from './dummyData';
 
 var linePathOne,
   xCoordinate,
   yCoordinate,
   circleInFirstLine,
   legend;
+
+const dummyData = [[{
+  "y": "0",
+  "x": 0
+}]]
+
+const leftAxisData = [0,1,2,3,4,5,6,7,8,9,10];
+const bottomAxisData =  [];
 
 var WIDTH = 380,
   HEIGHT = 380,
@@ -31,7 +38,6 @@ var WIDTH = 380,
 function createLineProps (path) {
   const properties = svgPathProperties (path);
   const length = properties.getTotalLength ();
-  console.log ('the length', length);
   return {
     d: path,
     strokeDashoffset: new Animated.Value (length),
@@ -112,7 +118,6 @@ export default class MulipleLineChart extends Component {
     let counter = 0;
     this.lineAnimated.forEach ((element, j) => {
       let staggerCircle = [];
-      console.log ('the counter is', counter);
       for (let k = counter; k < data[j].length + counter; k++) {
         staggerCircle.push (
           Animated.spring (this.AnimatedPoints[k].r, {
