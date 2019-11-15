@@ -1,5 +1,5 @@
-import MultiLineChart from './multipleLineChart'
+import MultipleLineChart from './multipleLineChart'
 
 export {
-    MultiLineChart
+    MultipleLineChart
 }
