@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Animated} from 'react-native';
-import Svg, {Circle, Line, G, Path, Text, Rect} from 'react-native-svg';
+import {Animated} from 'react-native';
+import Svg, {Circle, Line, G, Path, Text} from 'react-native-svg';
 import * as d3 from 'd3';
-import * as scale from 'd3-scale';
 import _ from 'lodash';
 import createLegend from './utils/createLegend';
 import NativePath from './AnimatedSVG';
@@ -15,12 +14,9 @@ import {
 import {dummyData, leftAxisData, bottomAxisData} from './dummyData';
 
 var linePathOne,
-  linePathSecond,
   xCoordinate,
   yCoordinate,
-  pointsOnLine,
   circleInFirstLine,
-  circleInSecondLine,
   legend;
 
 var WIDTH = 380,
@@ -44,7 +40,7 @@ function createLineProps (path) {
 }
 
 export default class MulipleLineChart extends Component {
-  static defaultProps: any = {
+  static defaultProps= {
     data: dummyData,
     leftAxisData: leftAxisData,
     bottomAxisData: bottomAxisData,
@@ -101,7 +97,6 @@ export default class MulipleLineChart extends Component {
 
   constructor (props) {
     super (props);
-    // this.lineAnimated = new Array (2);
   }
 
   animate () {
@@ -306,7 +301,6 @@ export default class MulipleLineChart extends Component {
                 );
               })}
         </G>;
-    // M40,74.5679012345679L73,20L106,171.11111111111111L139,87.16049382716051L139,360L370,183.70370370370372
 
     var lineGen = d3
       .line ()
@@ -351,7 +345,6 @@ export default class MulipleLineChart extends Component {
 
     let pointData = calculateOverallLineChartData (data);
     this.AnimatedPoints = new Array (pointData.length);
-    // console.log ('the anim points are', this.AnimatedPoints[0]);
     circleInFirstLine = dataPointsVisible
       ? _.map (pointData, (d, i) => {
           let text;
@@ -367,7 +360,6 @@ export default class MulipleLineChart extends Component {
                 : pointDataToShowOnGraph == 'X' ? d.x : ''}
             </Text>
           );
-          console.log ('the anim points are', this.AnimatedPoints[i]);
           return (
             <G key={i}>
               {animation
