@@ -45,7 +45,7 @@ function createLineProps (path) {
   };
 }
 
-export default class MulipleLineChart extends Component {
+export default class MultipleLineChart extends Component {
   static defaultProps= {
     data: dummyData,
     leftAxisData: leftAxisData,
